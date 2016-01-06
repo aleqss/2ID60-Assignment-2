@@ -10,7 +10,7 @@ http://2id60.win.tue.nl:9973
 2. Create a new sqlite3 database using the command given below
 3. Add the list of primes obtained through primes.sh to that database
 4. Run `npm install` inside the web directory
-5. Run `node planner` outside the web directory
+5. Run `node web` outside the web directory
 
 ## Implementation notes
 ### Database schema:
