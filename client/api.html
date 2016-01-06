@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Service with a public API that factorises your integers." />
+    <meta name="keywords" content="factorisation, factorization, prime, REST API, number" />
+    <meta name="author" content="s143364 at TU/e for 2ID60 Assignment 2" />
+
+    <title>Prime factorisation service: API</title>
+
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Lora' />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/api.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="js/jquery-2.1.4.min.js"><\/script>');
+    </script>
+    <script src="js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="./">Prime Factoriser</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="header">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="./">Home</a></li>
+
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">API Reference <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#nthprime">N-th prime</a></li>
+                            <li><a href="#factorise">Prime factors</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" id="content">
+        <h1>API Reference</h1>
+        <p>This page gives you a detailed description of the REST API offered by this website for use in a client or a web service, or in any other way.
+        You do not need an API key or anything similar to use it. The response format for any request will be JSON.</p>
+
+        <span class="anchor" id="nthprime"></span>
+        <h2>Find n-th prime number</h2>
+        <p>This service takes n, being a number between 1 and 50,000,000, both boundary values included, and returns the corresponding prime number.</p>
+        <p>The API call would look as follows:</p>
+        <pre>http://2id60.win.tue.nl:9973/api/nthprime?n=&lt;N&gt;</pre>
+        <p>In this example <code>&lt;N&gt;</code> is the place where your integer should go, e.g.:</p>
+        <pre>http://2id60.win.tue.nl:9973/api/nthprime?n=42</pre>
+        <p>The response for a valid <code>&lt;N&gt;</code> will contain the <code>&lt;N&gt;</code> itself and the corresponding prime, in the following format:</p>
+        <pre>{"n":&lt;N&gt;,"prime":&lt;P&gt;}</pre>
+        <p>Again, here <code>&lt;N&gt;</code> is the integer from your request, and <code>&lt;P&gt;</code> is the corresponding prime. An example for the call given earlier would look as follows:</p>
+        <pre>{"n":42,"prime":181}</pre>
+        <p>In case of a malformed request the response will be JSON and look as follows:</p>
+        <pre>{"error":&lt;message&gt;}</pre>
+        <p>The <code>&lt;message&gt;</code> is some string, namely, the error message. Its format is not strictly defined.</p>
+
+        <span class="anchor" id="factorise"></span>
+        <h2>Factorise an integer</h2>
+        <p>This service takes an integer n between 2 and 1,964,903,306, both boundary values included, and returns a list of its prime factors.</p>
+        <p>The API call in general looks as follows:</p>
+        <pre>http://2id60.win.tue.nl:9973/api/factorise?integer=&lt;N&gt;&amp;mode=&lt;mode&gt;</pre>
+        <p>In this example <code>&lt;N&gt;</code> is the place where your integer should go, e.g.:</p>
+        <pre>http://2id60.win.tue.nl:9973/api/factorise?integer=1028</pre>
+        <pre>http://2id60.win.tue.nl:9973/api/factorise?integer=1028&amp;mode=short</pre>
+        <p>In turn, <code>&lt;mode&gt;</code> can take one of the two values: <code>short</code> or <code>full</code>.
+        This parameter is optional; the default value is <code>full</code>. It determines the format in which the factors should be returned.</p>
+        <p>The response for a valid <code>&lt;N&gt;</code> will contain the <code>&lt;N&gt;</code> itself, the boolean value that tells whether that integer is a prime, and the array of its prime factors, in the following format:</p>
+        <pre>{"n":&lt;N&gt;,"isPrime":&lt;bool&gt;,"factors":[&lt;factor_1&gt;,&lt;factor_2&gt;,&lt;...&gt;,&lt;factor_m&gt;]}</pre>
+        <p>Here <code>&lt;N&gt;</code> is the integer from your request, <code>&lt;bool&gt;</code> is a boolean value, either true or false&mdash;if it is true, then <code>&lt;N&gt;</code> is a prime&mdash;and <code>&lt;factor_i&gt;</code>, for i between 1 and m, is one of the prime factors of the integer.
+        You can expect the list of prime factors to be sorted in ascending order.</p>
+        <p>In case <code>&lt;mode&gt;</code> is set to <code>short</code>, the response format is as follows:</p>
+        <pre>{"n":&lt;N&gt;,"isPrime":&lt;bool&gt;,"factors":[{"factor":&lt;factor_1&gt;,"count":&lt;count_1&gt;},&lt;...&gt;,{"factor":&lt;factor_m&gt;,"count":&lt;count_m&gt;}]}</pre>
+        <p>Here all the <code>factor_i</code> are guaranteed to be unique; <code>count_i</code> determines the power of that factor in the prime factorisation.</p>
+        <p>An example for the call given earlier would look as follows:</p>
+        <pre>{"n":1028,"isPrime":false,"factors":[2,2,257]}</pre>
+        <p>If invoked with the short mode, the response will be:</p>
+        <pre>{"n":1028,"isPrime":false,"factors":[{"factor":2,"count":2},{"factor":257,"count":1}]}</pre>
+        <p>In case of a malformed request the response will be JSON and look as follows:</p>
+        <pre>{"error":&lt;message&gt;}</pre>
+        <p>The <code>&lt;message&gt;</code> is some string, namely, the error message. Its format is not strictly defined.</p>
+    </div>
+</body>
+</html>

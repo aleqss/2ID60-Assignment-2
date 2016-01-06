@@ -1,0 +1,56 @@
+body {
+    padding-top: 70px;
+    height: 100vh;
+    background-color: #eee;
+    font-size: 1.2em;
+}
+
+h1 {
+    font-size: 2.7em;
+}
+
+h2 {
+    font-size: 1.6em;
+}
+
+h1, h2, p {
+    text-align: justify;
+}
+
+/* Larger font size on tablets */
+@media screen and (min-width: 768px) {
+    h1 {
+        font-size: 3em;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 1.3em;
+    }
+}
+
+/* Largest font size and some padding on desktop */
+@media screen and (min-width: 992px) {
+    nav {
+        font-size: 1.2em;
+    }
+
+    h1 {
+        font-size: 4em;
+    }
+
+    h2 {
+        font-size: 2.5em;
+    }
+
+    p {
+        font-size: 1.6em;
+    }
+    
+    #content {
+        margin-top: 7em;
+    }
+}

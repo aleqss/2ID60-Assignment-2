@@ -1,0 +1,22 @@
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    text-align: center;
+    font-family: Lora, serif;
+}
+
+h1 {
+    color: #263238;
+    text-transform: uppercase;
+}
+
+p {
+    color: #37474F;
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        width: 25em;
+    }
+}

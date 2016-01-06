@@ -1,0 +1,59 @@
+body {
+    padding-top: 70px;
+    height: 100vh;
+    background-color: #eee;
+    font-size: 1.2em;
+}
+
+h1 {
+    font-size: 2.7em;
+}
+
+h2 {
+    font-size: 1.6em;
+}
+
+h1, h2, p {
+    text-align: justify;
+}
+
+/* Magic for proper anchors rendering */
+.anchor{
+  display: block;
+  height: 50px;
+  margin-top: -50px;
+  visibility: hidden;
+}
+
+/* Larger font size on tablets */
+@media screen and (min-width: 768px) {
+    h1 {
+        font-size: 3em;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    p, pre {
+        font-size: 1.3em;
+    }
+}
+
+/* Largest font size on desktop */
+@media screen and (min-width: 992px) {
+    nav {
+        font-size: 1.2em;
+    }
+
+    h1 {
+        font-size: 4em;
+    }
+
+    h2 {
+        font-size: 2.5em;
+    }
+    p, pre {
+        font-size: 1.6em;
+    }
+}

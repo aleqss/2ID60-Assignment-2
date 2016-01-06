@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Service with a public API that factorises your integers." />
+    <meta name="keywords" content="factorisation, factorization, prime, REST API, number" />
+    <meta name="author" content="s143364 at TU/e for 2ID60 Assignment 2" />
+
+    <title>Prime factorisation service</title>
+
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Lora' />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="js/jquery-2.1.4.min.js"><\/script>');
+    </script>
+    <script src="js/bootstrap.min.js"></script> 
+    <script src="js/main.js"></script>
+
+    <noscript>
+        <meta http-equiv="refresh" content="0; url=noscript.html" />
+    </noscript>
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="./">Prime Factoriser</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="header">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="#">Home</a></li>
+
+                    <li class="dropdown">
+                        <a href="api.html" class="dropdown-toggle" data-toggle="dropdown" role="button">API Reference <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="api.html#nthprime">N-th prime</a></li>
+                            <li><a href="api.html#factorise">Prime factors</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" id="content">
+        <h1 class="text-center">Prime numbers magic</h1>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="md-right" id="nthPrompt">Want to find out what is the n-th prime? Input any integer up to 50 million and find out!</h2>
+
+                <form class="form-horizontal" id="nthPrimeForm">
+                    <div class="form-group">
+                        <label for="inputN" class="col-sm-4 control-label">N (order)</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="inputN" placeholder="42" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-4 col-sm-8">
+                            <button type="button" class="btn btn-primary btn-lg" id="findNPrime">Find the prime!</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div id="nthPrimeResults">
+                    <h2 class="text-center">The prime #<span id="nResN"></span> equals <span id="nResPrime"></span>.</h2>
+                    <button class="btn btn-default btn-lg center-block" id="restoreNthPrime">Go back</button>
+                </div>
+
+                <div class="spacing hidden-xs"></div>
+
+                <div class="alert alert-danger" role="alert" id="wrongNInput">
+                    <strong>Error!</strong> Your input should be a positive integer between 1 and 50,000,000.
+                </div>
+            </div>
+
+            <div class="spacing visible-xs-block visible-sm-block"></div>
+
+            <div class="col-md-6">
+                <h2 id="factorisePrompt">Want to find the prime factors of a number? Input an integer up to 1.96 billion and find out!</h2>
+
+                <form class="form-horizontal" id="factoriseForm">
+                    <div class="form-group">
+                        <label for="inputComposite" class="col-sm-4 control-label">Number to factorise</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="inputComposite" placeholder="2016" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-4 col-sm-8">
+                            <button type="button" class="btn btn-primary btn-lg" id="findFactors">Factorise!</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div id="factoriseResults">
+                    <h2 class="text-center" id="factResText"></h2>
+                    <button class="btn btn-default btn-lg center-block" id="restoreFactorisation">Go back</button>
+                </div>
+
+                <div class="spacing hidden-xs"></div>
+
+                <div class="alert alert-danger" role="alert" id="wrongFactInput">
+                    <strong>Error!</strong> Your input should be a positive integer between 2 and 1,964,903,306.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

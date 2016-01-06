@@ -1,0 +1,74 @@
+body {
+    padding-top: 70px;
+    height: 100vh;
+    background-color: #eee;
+    font-size: 1.2em;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h2, p {
+    font-size: 1.5em;
+}
+
+/* Spacing between the two forms not in desktop view */
+.spacing {
+    height: 1.5em;
+}
+
+/* Results hidden initially; main.js changes this */
+#nthPrimeResults, #factoriseResults, .alert {
+    display: none;
+}
+
+/* Center the buttons on a mobile */
+@media screen and (max-width: 768px) {
+    #findFactors, #findNPrime {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Larger font size for a tablet */
+@media screen and (min-width: 768px) {
+    h1 {
+        font-size: 3.5em;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 2em;
+    }
+}
+
+/* Largest font size and some padding at the top on desktop */
+@media screen and (min-width: 992px) {
+    label, nav, .alert {
+        font-size: 1.2em;
+    }
+
+    h1 {
+        font-size: 4.5em;
+    }
+
+    h2 {
+        font-size: 2.5em;
+    }
+    p {
+        font-size: 2.5em;
+    }
+
+    .md-right {
+        text-align: right;
+    }
+
+    #content {
+        margin-top: 7em;
+    }
+}
